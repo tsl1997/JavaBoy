@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	 http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	  http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	  http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	">
+
+    <!--使用component-scans标签扫描springmvc注解配置-->
+	<context:component-scan base-package="com.team.controller"></context:component-scan>
+
+	<!--配置视图解析器-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!--前缀-->
+		<property name="prefix" value="/"></property>
+		<!--后缀-->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<!--mvc类型转化时支持注解转换-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!--静态资源文件放行-->
+	<mvc:default-servlet-handler/>
+</beans>
+

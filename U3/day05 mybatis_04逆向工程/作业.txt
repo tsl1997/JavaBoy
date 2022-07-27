@@ -1,0 +1,19 @@
+看一遍笔记
+
+将上课的项目删除掉，新建项目
+1.反向工程:
+   生成seletByExample方法
+  
+  注意; 在mybatis配置文件中添加sql映射文件
+
+2.利用selectByExample查询所有学生信息
+   使用工具类获得sqlSession
+
+3.在2的基础上利用selectByExample查询年龄20到50之间的学生信息
+ criteria.andAgeGreaterThan(new Byte("21"));
+ criteria.andAgeLessThan(new Byte("50"));
+
+4.测试查询所有年级
+  要求不使用selectByExample方法，自己写方法和持久化操作
+
+

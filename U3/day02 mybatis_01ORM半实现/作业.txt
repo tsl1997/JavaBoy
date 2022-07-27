@@ -1,0 +1,20 @@
+看一遍笔记
+
+1.理解mybatis与orm jdbc的关系
+  mybatis就是jdbc的封装
+  orm是对象关系映射的思想，mybatis是实现orm的思想
+
+2.熟练搭建mybatis开发环境
+   加依赖，添加配置文件，编写sql映射文件
+
+3.理解mybatis调用持久化操作过程
+  获取SqlSession对象调用持久化操作
+
+
+4.完成上机练习查询所有年级、强化理解
+  理解实现过程
+
+   
+   
+
+

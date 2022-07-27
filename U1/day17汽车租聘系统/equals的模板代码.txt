@@ -1,0 +1,17 @@
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		JiaoChe keChe = (JiaoChe) o;
+
+		if (getBrand() != null&&!getBrand().equals(keChe.getBrand())) return false;
+		return getType() != null ? getType().equalsIgnoreCase(keChe.getType()) : keChe.getType() == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = getBrand() != null ? getBrand().hashCode() : 0;
+		result = 31 * result + getType()!=null?getType().hashCode():0;
+		return result;
+	}

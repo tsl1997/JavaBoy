@@ -1,0 +1,15 @@
+1.分析以下需求，并用代码实现：
+	(1)定义一个学生类Student，包含属性：姓名(String name)、年龄(int age)
+	(2)定义Map集合，用Student对象作为key，用字符串(此表示表示学生的住址)作为value
+	(3)利用四种方式遍历Map集合中的内容，格式：key::value
+难点：Student作为key时，区分key的唯一性
+	
+		
+2.分析以下需求，并用代码实现：
+	(1)定义一个学生类Student，属性：姓名(String name)、班级班号(String no)、成绩(double score)
+	(2)将若干Student对象存入List集合，并统计每个班级的总分和平均分
+		思路：
+			a.采用面向对象的思想
+			b.不推荐使用Map<String,List<Student>> 操作不方便
+			c.推荐使用Map<String，ClassRoom>
+			

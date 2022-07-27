@@ -1,0 +1,25 @@
+先笔记看一遍：
+本次课作业:
+1.将上机练习
+  使用ssm查询所有学生做成功
+
+2.重点理解ssm的实现过程
+  spring整合mybatis
+  spring接管理业务
+  spring整合springmvc(无缝集成)
+
+  问题:
+  控制器如何调业务、业务如何调用数访问的
+
+3.理解
+ @controller注解
+ @service注解
+ @autowired注解
+ @Component   定义组件
+
+
+4.重新创建新的工程使用ssm整合查询所有学生
+
+
+
+

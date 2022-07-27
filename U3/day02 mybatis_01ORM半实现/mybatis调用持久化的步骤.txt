@@ -1,0 +1,22 @@
+上机练习三:使用mybatis调用持久化操作的步骤:  mybatis使用sqlSession调用持久化操作
+
+        //使用MyBatis调用持久化的步骤
+        try {
+            //1.读取mybatis的配置
+            Reader reder=Resources.getResourceAsReader("mybatis-config.xml"); //在resources目录中找
+            //2.获取SqlSessionFactory工厂
+            SqlSessionFactoryBuilder sqlSessionFactoryBuilder=new SqlSessionFactoryBuilder();
+            SqlSessionFactory sqlSessionFactory=sqlSessionFactoryBuilder.build(reder);
+            //3.获取SqlSession对象调用持久化操作
+            SqlSession sqlSession=sqlSessionFactory.openSession();
+            //4.调用持久化操作
+            //sqlSession.selectList("sql映射文件中的持久化操作的id");
+            List<Grade> grades=sqlSession.selectList("com.team.dao.GradeDao.getAllGrade");
+            //5.关闭sqlSession
+            sqlSession.close();
+            return grades;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }

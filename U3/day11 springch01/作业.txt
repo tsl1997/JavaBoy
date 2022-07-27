@@ -1,0 +1,27 @@
+作业:看一遍笔记
+1.理解spring包含的内容
+ ioc,aop,dao层支持，web集成
+
+2.重点理解ioc实现
+
+3.理解调用容器中对象的过程
+
+4.继上机练习之后：使用p命名空间注入创建学生
+
+5.使用构造注入(注入学号、姓名、性别、地址)创建学生
+  
+6.理解考虑:通过spring的配置，反推类的属性
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/数据库"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+class BasicDataSource{
+  private String driverClassName="com.mysql.jdbc.Driver";
+  ...
+
+  
+}
+

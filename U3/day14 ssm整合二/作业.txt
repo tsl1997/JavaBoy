@@ -1,0 +1,20 @@
+1. 看笔记一遍
+
+2. 理解事务的配置
+    事务的实现 利用的就是AOP的思想
+
+3. 实现查询年级
+
+4. 重点看spring的配置文件(基础，每个项目都要有这些配置)
+   记住常用类
+   PropertyPlaceholderConfigurer
+   BasicDataSource
+   SqlSessionFactoryBean
+   MapperScannerConfigurer
+   DataSourceTransactionManager  事务
+
+5. 添加学生
+
+
+6.(选做)删除年级(删除学生基于事务)
+   

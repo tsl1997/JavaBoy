@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.GradeDao">
+	<!-- 定义一系列的持久化操作 -->
+	<!-- 定义resultMap结果类型 -->
+	<resultMap type="com.entity.Grade" id="result1">
+		 <id column="id" property="gid"/>
+		 <result column="name" property="gname"/>
+	</resultMap>
+	
+	<!-- 查询所有年级的持久化操作    ORM-->
+	<select id="getAllGrade" resultType="" resultMap="result1">
+		select gid as id,gname as name from grade
+	</select>
+</mapper>

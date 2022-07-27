@@ -1,0 +1,37 @@
+看笔记,多理解一下aop
+
+作业一:在上课的基础上,使用set集合存放多个地址，并显示
+1.在学生类中定义
+  set集合存多个地址
+2.在show方法中显示
+3.修改applicationContext配置进行注入
+
+
+作业二:对学生类调用show方法时实现增强
+使用前置增强实现，当调用show方法之前输出提示，我做准备开始输出信息
+1.定义增强类
+//前置增强
+public class MyBeforeAdvice implements MethodBeforeAdvice {
+    @Override
+    public void before(Method method, Object[] args, Object target) throws Throwable {
+       //增强代码:
+        System.out.println("我做准备开始输出信息...");
+    }
+}
+
+2.在spring配置文件中定义增强类
+   <!--定义增强类的bean对象-->
+    <bean id="myBeforeAdvice" class="com.aop.MyBeforeAdvice"></bean>
+
+3.配置切入点
+ <!--织入切面的配置-->
+    <aop:config>
+        <!--定义切入点-->
+        <aop:pointcut id="mypointcut" expression="execution(* com.aop..*.*(..))"></aop:pointcut>
+        <!--定义切入点的增强类-->
+        <aop:advisor advice-ref="myBeforeAdvice" pointcut-ref="mypointcut"></aop:advisor>
+    </aop:config>
+
+
+作业三:对学生类调用show方法时实现后置增强  
+  略

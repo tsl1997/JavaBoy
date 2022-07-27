@@ -1,0 +1,105 @@
+三、	使用springmvc框架的步骤：
+1.	导入springmvc相关的jar包(添加依赖)
+ <!-- 初始化框架的版本号 -->
+<properties>
+  <spring.version>4.3.3.RELEASE</spring.version>
+</properties>
+
+<dependencies>
+ <!--spring支持的相关和springmvc依赖(spring-web、spring-webmvc)-->
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-oxm</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-tx</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aop</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+  <!-- 引入Spring 依赖 end -->
+
+
+  2． 添加springmvc的配置文件(springmvc.xml)：存于resources目录
+复制现有的springmvc配置文件
+ <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+     http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd
+     http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+   ">
+   <!--配置用户控制器的-->
+</beans>
+
+
+3.	修改web.xml文件:配置核心控制器
+<!--核心控制器
+   1.拦截所有的用户请求，并根据请求的名称分发到用户控制
+   2.读取sprignmvc配置文件
+-->
+<servlet>
+  <servlet-name>springmvc</servlet-name>
+<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  <init-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:springmvc.xml</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+  <servlet-name>springmvc</servlet-name>
+  <!--拦截的请求-->
+  <url-pattern>/</url-pattern>
+</servlet-mapping>
+

@@ -1,0 +1,66 @@
+原生态AJAX技术
+第一步，创建ajax核心
+	> 支持大部分浏览器兼容：var xmlHttp=new xmlHttpRequest();
+	>IE6浏览器及IE6内核的浏览器 var xmlHttp=new ActiveXObject(“Msmxl2.XMLHTTP”);
+	>IE5.5及之前的浏览器 var xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+	
+	处理浏览器的兼容性创建核心
+	function createXmlHttpRequest(){
+		var xmlHttp
+		try(){//支持大部门浏览器
+			xmlHttp=new xmlHttpRequest();
+		}catch(Execption e){
+			try(){//支持iE6
+				xmlHttp= new ActiveXObject(“Msmxl2.XMLHTTP”);
+			}catch(Execption e){
+				try(){//支持iE5.5
+					xmlHttp= new ActiveXObject("Microsoft.XMLHTTP");
+				}catch(Execption e){
+					
+				}
+			}
+		}
+		return xmlHttp;
+	}
+第二步，打开与服务器的连接(和服务器端连接)
+	>open(参数1，参数2，参数3)是与服务器端连接的一个函数
+	   >参数1表示提交方式，GET显式提交/POST隐式提交	
+	   >参数2表示和服务器端连接的一个接口地址，比如/login?status=add
+	   >参数3表示是否是异步交互，true表示异步交互，false表示同步交互
+		参数3(async)可以不用写，默认是true
+	 代码演示
+	 var xmlHttp=createXmlHttpRequest();
+	 xmlHttp.open("GET","/login",true);
+第三步：发送请求，服务器并没有响应
+	>send();
+	   >如果是post提交的话，send("name=张三&age=12");并且要设置请求体的数据传输格式xmlHttpRequest.setRequestHeader("content-type","application/x-www-form-urlencoded")
+	   >如果是get提交的话，不传参的话，send(null);
+	   xmlHttp.send(null);
+第四步，接收服务器响应
+	>xmlHttpRequest对象提供了一个响应的函数onreadystatechange,
+		它会在XMLHttpRequest对象的状态发生变化时被调用
+	>xmlHttpRequest对象发生的常用状态
+	  >0  初始化状态未完成，创建xmlHttpRequest对象
+	  >1  请求已经开始，只是打开了open()
+	  >2  开始发送请求，执行了send(),没有获取响应
+	  >3  开始接收响应
+	  >4  结束接收响应
+	  常用的是状态是4
+	>响应状态码
+	  >200， 表示接收成功
+	  >404  失败
+	  >500  失败
+	代码演示：
+	xmlHttp.onreadystatechange=function(){
+		xmlHttp.readyState表示获取对象的状态
+		xmlHttp.status表示获取响应状态码
+		xmlHttp.responseText表示获取响应内容
+	双重判断
+	if(xmlHttp.readyState==4 && xmlHttp.status==200){
+		alert(xmlHttp.responseText)
+	}
+	}
+
+	 
+	
+	

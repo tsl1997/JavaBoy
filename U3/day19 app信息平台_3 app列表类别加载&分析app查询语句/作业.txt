@@ -1,0 +1,44 @@
+作业一：
+理解无限级分类如何存储、
+onchange事件实现二级联动、
+
+
+作业二:
+完成app信息显示页面的查询条件加载:
+加载平台、状态、一级分类、二级分类、三级分类
+
+
+作业三:理解以下语句
+-- 连接查询
+-- 查询app信息及关随着平台名称、状态名秒、一级分类，二级分类，三级分类
+SELECT app_info.id,softwarename, apkname,downloads,versionid,
+pt.valuename AS ptname,state.valuename AS statename,
+c1.categoryname  AS tname1,c2.categoryname AS  tname2,c3.categoryname AS  tname3
+FROM `app_info` 
+LEFT JOIN (SELECT valueid,valuename FROM `data_dictionary` WHERE  typename='所属平台') AS  pt
+ON app_info.`flatformId` = pt.valueid  -- 关联平台
+LEFT JOIN (SELECT valueid,valuename FROM `data_dictionary` WHERE  typename='APP状态') AS state
+ON app_info.`status`=state.valueid   -- 关联状态
+LEFT JOIN (SELECT id,categoryName FROM app_category) c1
+ON app_info.`categoryLevel1`=c1.id  -- 关联一级分类名
+LEFT JOIN (SELECT id,categoryName FROM app_category) c2
+ON app_info.`categoryLevel2`=c2.id -- 关联二级分类名
+LEFT JOIN (SELECT id,categoryName FROM app_category) c3
+ON app_info.`categoryLevel3`=c3.id  -- 关联三级分类名
+
+-- 子查询
+-- 查询app信息及关随着平台名称、状态名秒、一级分类，二级分类，三级分类
+SELECT * FROM app_info
+SELECT app_info.id,softwarename,apkname,downloads,versionid
+,(SELECT valuename FROM `data_dictionary`
+  WHERE  typename='所属平台' AND valueid=flatformid) AS ptname 
+,(SELECT valuename FROM `data_dictionary`
+  WHERE  typename='APP状态' AND valueid=STATUS) AS statename 
+,(SELECT categoryName FROM `app_category`
+  WHERE id=categoryLevel1) AS tname1 
+,(SELECT categoryName FROM `app_category`
+  WHERE id=categoryLevel2) AS tname2
+,(SELECT categoryName FROM `app_category`
+  WHERE id=categoryLevel3) AS tname3  
+ FROM `app_info`
+
